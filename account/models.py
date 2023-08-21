@@ -37,8 +37,16 @@ class Account(AbstractBaseUser, PermissionsMixin):
         verbose_name = _('Account')
         verbose_name_plural = _('Accounts')
 
+    GENDER = (
+        (0, 'Male'),
+        (1, 'Female'),
+        (2, 'Not Specified')
+    )
+
     username = models.CharField(max_length=50, unique=True, verbose_name=_('Username'), db_index=True)
     full_name = models.CharField(max_length=50, verbose_name=_('Full name'), null=True)
+    gender = models.IntegerField(choices=GENDER, default=2)
+    date_of_birth = models.DateField(verbose_name=_("Birthday"), null=True)
     phone = models.CharField(max_length=16, verbose_name=_('Phone Number'), null=True)
     image = models.ImageField(upload_to='accounts/', verbose_name=_('Account image'), null=True, blank=True)
     bio = models.TextField(null=True, blank=True)
