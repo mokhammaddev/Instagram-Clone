@@ -5,8 +5,8 @@ from .models import Account
 
 
 class RegisterSerializer(serializers.ModelSerializer):
-    password = serializers.CharField(min_length=6, max_length=25, write_only=True)
-    password2 = serializers.CharField(min_length=6, max_length=25, write_only=True)
+    password = serializers.CharField(min_length=3, max_length=25, write_only=True)
+    password2 = serializers.CharField(min_length=3, max_length=25, write_only=True)
 
     class Meta:
         model = Account

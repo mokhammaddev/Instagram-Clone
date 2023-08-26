@@ -5,3 +5,5 @@ from .models import Location
 @admin.register(Location)
 class LocationAdmin(admin.ModelAdmin):
     list_display = ('id', 'title')
+
+
