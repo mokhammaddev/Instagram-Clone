@@ -1,6 +1,5 @@
 from django.db import models
 from account.models import Account
-from main.models import Location
 
 
 def file_path(instance, filename):
@@ -9,6 +8,13 @@ def file_path(instance, filename):
 
 def content_path(instance, filename):
     return f"story/{filename}"
+
+
+class Location(models.Model):
+    title = models.CharField(max_length=221)
+
+    def __str__(self):
+        return self.title
 
 
 class Post(models.Model):
@@ -34,5 +40,15 @@ class Story(models.Model):
     content = models.FileField(upload_to=content_path)
     description = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True)
+
+
+class Comment(models.Model):
+    user = models.ForeignKey(Account, on_delete=models.SET_NULL, null=True, blank=True)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    description = models.TextField()
+    created_date = models.DateTimeField(auto_now_add=True)
+
+
+
 
 

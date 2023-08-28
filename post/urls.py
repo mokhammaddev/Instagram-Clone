@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import (PostListCreateAPIView, PostRUDAPIView, SaveListCreateAPIView, SaveDeleteAPIView, StoryDeleteAPIView,
-                    StoryListCreateAPIView)
+                    StoryListCreateAPIView, LocationListCreateAPIView, LocationRUDAPIView, CommentListCreateAPIView)
 
 
 urlpatterns = [
@@ -13,4 +13,9 @@ urlpatterns = [
     # story
     path('story/', StoryListCreateAPIView.as_view()),
     path('story/<int:pk>/', StoryDeleteAPIView.as_view()),
+    # location
+    path('location/', LocationListCreateAPIView.as_view()),
+    path('location/<int:pk>/', LocationRUDAPIView.as_view()),
+    # comment
+    path('comment/', CommentListCreateAPIView.as_view()),
 ]

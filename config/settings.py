@@ -44,7 +44,6 @@ INSTALLED_APPS = [
 
     # local
     'account',
-    'main',
     'post',
 ]
 
