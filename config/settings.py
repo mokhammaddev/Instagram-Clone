@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     # local
     'account',
     'post',
+    'chat',
 ]
 
 MIDDLEWARE = [
