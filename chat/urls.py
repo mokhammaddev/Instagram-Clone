@@ -1,11 +1,13 @@
-from django.urls import path
-from chat import views
+from django.urls import path, include
+from .views import RoomListCreateAPIView, RoomWithMessageAPIView, MessageCreateAPIView, \
+    lobby, RoomViewSet, MessageViewSet
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register(r"rooms", RoomViewSet)
+router.register(r"messages", MessageViewSet)
+
 
 urlpatterns = [
-    # room
-    path('room/', views.RoomListCreateAPIView.as_view()),
-    path('room/<int:pk>/', views.RoomRUDAPIView.as_view()),
-    # message
-    path('message/', views.MessageListCreateAPIView.as_view()),
-    path('message/<int:pk>/', views.MessageRUDAPIView.as_view()),
+    path("ws/", include(router.urls)),
 ]
