@@ -34,6 +34,7 @@ from django.shortcuts import get_object_or_404, render
 from rest_framework.permissions import IsAuthenticated
 
 
+# http://127.0.0.1:8000/chat/room/
 class RoomViewSet(viewsets.ModelViewSet):
     serializer_class = RoomSerializer
     queryset = Room.objects.all()
@@ -57,6 +58,7 @@ class RoomViewSet(viewsets.ModelViewSet):
         return Response({'message': 'Room is created successfully'})
 
 
+# http://127.0.0.1:8000/chat/message/
 class MessageViewSet(viewsets.ModelViewSet):
     serializer_class = RoomMessageSerializer
     queryset = Message.objects.order_by("created_date")
